@@ -1,0 +1,259 @@
+/* ===== Variables de couleurs ===== */
+:root {
+  --terracotta: #c1440e;
+  --terracotta-dark: #9c360b;
+  --olive: #6b8e4e;
+  --creme: #fdf6ec;
+  --texte: #2b2b2b;
+  --blanc: #ffffff;
+}
+
+/* ===== Reset de base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: var(--texte);
+  background-color: var(--creme);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Georgia', serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== Header / Navigation ===== */
+header {
+  background-color: var(--blanc);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--terracotta);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--terracotta);
+}
+
+/* ===== Hero ===== */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80') center/cover no-repeat;
+  color: var(--blanc);
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--terracotta);
+  color: var(--blanc);
+  padding: 0.9rem 2rem;
+  border-radius: 4px;
+  font-size: 1.05rem;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: var(--terracotta-dark);
+}
+
+/* ===== Sections générales ===== */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+section h2 {
+  font-size: 2.2rem;
+  color: var(--olive);
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--terracotta);
+  margin: 0.6rem auto 0;
+}
+
+/* ===== À propos ===== */
+.apropos p {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* ===== Menu ===== */
+.menu {
+  background-color: var(--blanc);
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px dashed #ccc;
+  padding: 1.2rem 0;
+}
+
+.menu-item h3 {
+  color: var(--texte);
+  font-size: 1.2rem;
+}
+
+.menu-item p {
+  color: #777;
+  font-size: 0.95rem;
+  flex: 1;
+  margin: 0 1rem;
+}
+
+.prix {
+  font-weight: bold;
+  color: var(--terracotta);
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+/* ===== Galerie ===== */
+.galerie {
+  text-align: center;
+  color: #777;
+}
+
+/* ===== Avis ===== */
+.avis {
+  background-color: var(--olive);
+  color: var(--blanc);
+  text-align: center;
+}
+
+.avis h2 {
+  color: var(--blanc);
+}
+
+.avis h2::after {
+  background-color: var(--blanc);
+}
+
+.avis blockquote {
+  font-size: 1.3rem;
+  font-style: italic;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===== Contact ===== */
+.contact {
+  text-align: center;
+}
+
+.contact p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: var(--texte);
+  color: var(--blanc);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* ===== Responsive (mobile) ===== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .nav-links {
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+  }
+
+  section {
+    padding: 3rem 1.2rem;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .menu-item p {
+    margin: 0;
+  }
+}
