@@ -181,6 +181,32 @@ section h2::after {
   color: #777;
 }
 
+.galerie-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.galerie-grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.galerie-note {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .galerie-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 /* ===== Avis ===== */
 .avis {
   background-color: var(--olive);
@@ -201,6 +227,12 @@ section h2::after {
   font-style: italic;
   max-width: 600px;
   margin: 0 auto;
+}
+
+.avis-note {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 
 /* ===== Contact ===== */
