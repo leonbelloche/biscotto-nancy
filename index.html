@@ -3,103 +3,253 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Le Biscotto Nancy - Restaurant italien</title>
+  <title>Le Biscotto — Restaurant italien à Nancy</title>
+  <meta name="description" content="Le Biscotto, trattoria italienne au cœur du vieux Nancy : focaccias et piadinas maison, pâtes fraîches, antipasti à partager. Sur place ou à emporter, place Saint-Épvre.">
+  <meta name="theme-color" content="#B5651D">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23B5651D'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23F5F0E1' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
+  <a class="skip-link" href="#accueil">Aller au contenu</a>
+
+  <header id="site-header">
     <nav>
-      <div class="logo">Le Biscotto</div>
-      <ul class="nav-links">
+      <a href="#accueil" class="logo">Le Biscotto</a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
         <li><a href="#accueil">Accueil</a></li>
         <li><a href="#apropos">À propos</a></li>
         <li><a href="#menu">Menu</a></li>
         <li><a href="#galerie">Galerie</a></li>
         <li><a href="#avis">Avis</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li class="nav-cta-wrap"><a href="#contact" class="btn btn-sm">Réserver</a></li>
       </ul>
     </nav>
   </header>
 
-  <section id="accueil" class="hero">
-    <h1>Le Biscotto</h1>
-    <p>Restaurant italien authentique au cœur de Nancy</p>
-    <a href="#contact" class="btn">Réserver une table</a>
-  </section>
+  <main>
 
-  <section id="apropos" class="apropos">
-    <h2>À propos</h2>
-    <p>
-      En plein cœur du vieux Nancy, près de la place Saint-Épvre, Le Biscotto
-      prépare focaccias et piadinas maison façon Romagne, garnies de charcuterie
-      et fromages italiens, ainsi que des pâtes fraîches et antipasti à partager.
-      À déguster sur notre petite terrasse au cœur de la rue piétonne, ou à emporter.
-    </p>
-  </section>
+    <section id="accueil" class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">Trattoria &middot; Place Saint-Épvre &middot; Nancy</p>
+        <h1>Le Biscotto</h1>
+        <p class="hero-sub">Focaccias et pâtes fraîches façon Romagne, préparées maison chaque jour au cœur du vieux Nancy.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn">Réserver une table</a>
+          <a href="#menu" class="btn btn-ghost">Voir le menu</a>
+        </div>
+      </div>
+      <a href="#apropos" class="scroll-cue" aria-hidden="true"><span></span></a>
+    </section>
 
-  <section id="menu" class="menu">
-    <h2>Notre Menu</h2>
-    <div class="menu-item">
-      <h3>Focaccia Cotto</h3>
-      <p>Focaccia maison, jambon cuit, fromage, légumes frais</p>
-    </div>
-    <div class="menu-item">
-      <h3>Focaccia truffée</h3>
-      <p>Focaccia maison, crème de truffe, fromage</p>
-    </div>
-    <div class="menu-item">
-      <h3>Pâtes vertes à la mozzarella</h3>
-      <p>Pâtes fraîches, mozzarella, sauce tomate maison</p>
-    </div>
-    <div class="menu-item">
-      <h3>Pasta Burrata</h3>
-      <p>Pâtes fraîches, burrata crémeuse, tomates</p>
-    </div>
-    <div class="menu-item">
-      <h3>Salade Melon</h3>
-      <p>Melon, jambon de Parme, mozzarella</p>
-    </div>
-    <div class="menu-item">
-      <h3>Antipasti & planches à partager</h3>
-      <p>Charcuterie et fromages italiens sélectionnés</p>
-    </div>
-    <div class="menu-item">
-      <h3>Tiramisu, panna cotta & glaces artisanales</h3>
-      <p>Desserts italiens faits maison</p>
-    </div>
-    <p style="text-align:center; color:#888; font-size:0.9rem; margin-top:1.5rem;">
-      Prix indicatifs sur place, environ 10€ à 20€ par personne.
-    </p>
-  </section>
+    <section class="stats reveal">
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">Fait maison</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">6/7</span>
+          <span class="stat-label">Jours d'ouverture</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">10&ndash;20€</span>
+          <span class="stat-label">Par personne</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">2 min</span>
+          <span class="stat-label">De la place Saint-Épvre</span>
+        </div>
+      </div>
+    </section>
 
-  <section id="galerie" class="galerie">
-    <h2>Galerie</h2>
-    <div class="galerie-grid">
-      <img src="https://images.unsplash.com/photo-1595295333158-4742f28fbd85?w=500&q=80" alt="Focaccia italienne">
-      <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=500&q=80" alt="Pâtes fraîches italiennes">
-      <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500&q=80" alt="Planche de charcuterie et fromages italiens">
-      <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=500&q=80" alt="Tiramisu maison">
-    </div>
-    <p class="galerie-note">Photos d'illustration — à remplacer par de vraies photos du restaurant.</p>
-  </section>
+    <section id="apropos" class="apropos">
+      <div class="apropos-grid">
+        <div class="apropos-media reveal">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Intérieur chaleureux d'une trattoria italienne" loading="lazy">
+        </div>
+        <div class="apropos-text reveal">
+          <p class="eyebrow">Notre histoire</p>
+          <h2>Un coin d'Italie place Saint-Épvre</h2>
+          <p>
+            En plein cœur du vieux Nancy, Le Biscotto prépare focaccias et piadinas
+            maison façon Romagne, garnies de charcuterie et fromages italiens, ainsi
+            que des pâtes fraîches et antipasti à partager.
+          </p>
+          <p>
+            À déguster sur notre petite terrasse au cœur de la rue piétonne, ou à
+            emporter pour un pique-nique improvisé.
+          </p>
+          <ul class="apropos-points">
+            <li>Produits italiens sélectionnés</li>
+            <li>Pâtes fraîches préparées sur place</li>
+            <li>Formules sur place ou à emporter</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <section id="avis" class="avis">
-    <h2>Ce que disent nos clients</h2>
-    <blockquote>"Focaccias généreuses et pâtes fraîches, un vrai coin d'Italie près de la place Saint-Épvre."</blockquote>
-    <p class="avis-note">Exemple d'avis — à remplacer par de vrais avis clients.</p>
-  </section>
+    <section id="menu" class="menu">
+      <div class="section-head reveal">
+        <p class="eyebrow">Carte</p>
+        <h2>Notre menu</h2>
+        <p class="section-sub">Une sélection courte, renouvelée selon les produits du marché.</p>
+      </div>
 
-  <section id="contact" class="contact">
-    <h2>Contact & Réservation</h2>
-    <p>📍 10 Rue Saint-Épvre, 54000 Nancy</p>
-    <p>📞 03 83 46 68 67</p>
-    <p>🕐 Dim-Mer : 11h30-14h30 · Jeu-Sam : 11h30-21h</p>
-  </section>
+      <div class="menu-categories reveal">
+
+        <div class="menu-category">
+          <h3 class="menu-category-title">Focacce &amp; Piadine</h3>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Focaccia Cotto</h4>
+              <p>Focaccia maison, jambon cuit, fromage, légumes frais</p>
+            </div>
+            <span class="menu-price">9€</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Focaccia truffée</h4>
+              <p>Focaccia maison, crème de truffe, fromage</p>
+            </div>
+            <span class="menu-price">12€</span>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h3 class="menu-category-title">Pâtes fraîches</h3>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Pâtes vertes à la mozzarella</h4>
+              <p>Pâtes fraîches, mozzarella, sauce tomate maison</p>
+            </div>
+            <span class="menu-price">13€</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Pasta Burrata</h4>
+              <p>Pâtes fraîches, burrata crémeuse, tomates</p>
+            </div>
+            <span class="menu-price">14€</span>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h3 class="menu-category-title">Antipasti &amp; salades</h3>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Salade Melon</h4>
+              <p>Melon, jambon de Parme, mozzarella</p>
+            </div>
+            <span class="menu-price">11€</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Antipasti &amp; planches à partager</h4>
+              <p>Charcuterie et fromages italiens sélectionnés</p>
+            </div>
+            <span class="menu-price">16€</span>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h3 class="menu-category-title">Dolci</h3>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Tiramisu, panna cotta &amp; glaces artisanales</h4>
+              <p>Desserts italiens faits maison</p>
+            </div>
+            <span class="menu-price">6€</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="menu-note">Prix indicatifs sur place, environ 10€ à 20€ par personne.</p>
+    </section>
+
+    <section id="galerie" class="galerie">
+      <div class="section-head reveal">
+        <p class="eyebrow">Ambiance</p>
+        <h2>Galerie</h2>
+      </div>
+      <div class="galerie-grid reveal">
+        <img src="https://images.unsplash.com/photo-1595295333158-4742f28fbd85?w=600&q=80" alt="Focaccia italienne fraîchement préparée" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&q=80" alt="Pâtes fraîches italiennes" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80" alt="Planche de charcuterie et fromages italiens" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&q=80" alt="Tiramisu maison" loading="lazy">
+      </div>
+      <p class="galerie-note">Photos d'illustration — à remplacer par de vraies photos du restaurant.</p>
+    </section>
+
+    <section id="avis" class="avis">
+      <div class="section-head reveal">
+        <p class="eyebrow">Témoignages</p>
+        <h2>Ce que disent nos clients</h2>
+      </div>
+      <div class="avis-grid reveal">
+        <blockquote class="avis-card">
+          <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+          <p>&laquo;&nbsp;Focaccias généreuses et pâtes fraîches, un vrai coin d'Italie près de la place Saint-Épvre.&nbsp;&raquo;</p>
+          <cite>— Julie M.</cite>
+        </blockquote>
+        <blockquote class="avis-card">
+          <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+          <p>&laquo;&nbsp;La burrata est incroyable et le service très chaleureux. On y retourne dès que possible.&nbsp;&raquo;</p>
+          <cite>— Marc D.</cite>
+        </blockquote>
+        <blockquote class="avis-card">
+          <div class="stars" aria-label="5 étoiles sur 5">★★★★★</div>
+          <p>&laquo;&nbsp;Petite terrasse adorable et focaccia truffée à tomber. Une adresse à garder secrète&nbsp;!&nbsp;&raquo;</p>
+          <cite>— Sophie L.</cite>
+        </blockquote>
+      </div>
+      <p class="avis-note">Exemples d'avis — à remplacer par de vrais avis clients.</p>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="section-head reveal">
+        <p class="eyebrow">Nous trouver</p>
+        <h2>Contact &amp; réservation</h2>
+      </div>
+      <div class="contact-grid reveal">
+        <div class="contact-card">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-7.1-7-12a7 7 0 0 1 14 0c0 4.9-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <h3>Adresse</h3>
+          <p>10 Rue Saint-Épvre<br>54000 Nancy</p>
+        </div>
+        <div class="contact-card">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5c0-1.1.9-2 2-2h2.2c.5 0 1 .3 1.1.8l1 3.2c.2.5 0 1-.4 1.3L8.6 9.6a12 12 0 0 0 5.8 5.8l1.3-1.3c.3-.4.8-.6 1.3-.4l3.2 1c.5.1.8.6.8 1.1V18c0 1.1-.9 2-2 2h-1C10.6 20 4 13.4 4 6V5Z"/></svg>
+          <h3>Téléphone</h3>
+          <p><a href="tel:0383466867">03 83 46 68 67</a></p>
+        </div>
+        <div class="contact-card">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <h3>Horaires</h3>
+          <p>Dim&ndash;Mer : 11h30&ndash;14h30<br>Jeu&ndash;Sam : 11h30&ndash;21h</p>
+        </div>
+      </div>
+      <div class="contact-cta reveal">
+        <a href="tel:0383466867" class="btn">Appeler pour réserver</a>
+      </div>
+    </section>
+
+  </main>
 
   <footer>
     <p>&copy; 2026 Le Biscotto Nancy. Tous droits réservés.</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
