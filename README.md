@@ -10,6 +10,8 @@ clients (restaurants, salons, artisans...).
 - Responsive (mobile-first), animations au scroll respectant `prefers-reduced-motion`
 - Design system : palette "Nature Distilled" (terracotta / argile / olive / crème) et
   typographie Playfair Display SC + Karla, générés avec le skill `ui-ux-pro-max`
+- Three.js (chargé en module ES via CDN jsdelivr, sans bundler) pour un effet de
+  particules discret dans le hero
 
 ## Structure
 - `index.html` — contenu et structure : hero, frise chronologique, plat signature,
@@ -18,6 +20,10 @@ clients (restaurants, salons, artisans...).
 - `style.css` — design system (tokens couleur/typo, composants, responsive)
 - `script.js` — menu mobile, navbar au scroll, parallax du hero, compteurs
   animés, lightbox galerie, scrollspy nav, formulaire de réservation (mailto)
+- `three-scene.js` — module ES, effet de particules du hero (Three.js), chargé via
+  `<script type="importmap">` pointant vers jsdelivr ; totalement désactivé si
+  `prefers-reduced-motion` est actif ou si WebGL est indisponible (amélioration
+  progressive pure, aucun impact si le module ne charge pas)
 
 ## À personnaliser avant mise en production
 - Frise chronologique, mentions presse et adresse e-mail du formulaire
