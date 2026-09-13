@@ -11,7 +11,10 @@ clients (restaurants, salons, artisans...).
 - Design system : palette "Nature Distilled" (terracotta / argile / olive / crème) et
   typographie Playfair Display SC + Karla, générés avec le skill `ui-ux-pro-max`
 - Three.js (chargé en module ES via CDN jsdelivr, sans bundler) pour un effet de
-  particules discret dans le hero
+  particules discret dans le hero, avec tilt caméra au mouvement de la souris
+- Système de motion cohérent (easing/timing, chorégraphie en cascade, micro-
+  interactions) construit avec les skills `ui-animation`, `css-animation-creator`,
+  `micro-interaction-spec` et `threejs-animation` installés depuis skills.sh
 
 ## Structure
 - `index.html` — contenu et structure : hero, frise chronologique, plat signature,

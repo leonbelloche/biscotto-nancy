@@ -23,6 +23,13 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --duration: 220ms;
 
+  /* Motion system — ui-animation skill easing defaults */
+  --ease-enter: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-move: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-expo-out: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-press: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --stagger-step: 60ms;
+
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 28px;
@@ -127,6 +134,18 @@ ul, ol {
   transform: translateY(-2px);
 }
 
+.btn:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 100ms;
+  transition-timing-function: var(--ease-press);
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+  transform: none;
+}
+
 .btn-ghost {
   background-color: transparent;
   border: 1.5px solid rgba(255,255,255,0.75);
@@ -175,6 +194,33 @@ ul, ol {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Staggered entrances — one reveal per item, not per container
+   (see ui-animation choreography: don't double-animate container + children) */
+.menu-item.reveal,
+.galerie-item.reveal,
+.avis-card.reveal,
+.timeline-item.reveal {
+  transition-delay: calc(var(--stagger-i, 0) * var(--stagger-step));
+}
+
+.menu-category .menu-item:nth-child(1) { --stagger-i: 0; }
+.menu-category .menu-item:nth-child(2) { --stagger-i: 1; }
+.menu-category .menu-item:nth-child(3) { --stagger-i: 2; }
+
+.galerie-item:nth-child(1) { --stagger-i: 0; }
+.galerie-item:nth-child(2) { --stagger-i: 1; }
+.galerie-item:nth-child(3) { --stagger-i: 2; }
+.galerie-item:nth-child(4) { --stagger-i: 3; }
+
+.avis-card:nth-child(1) { --stagger-i: 0; }
+.avis-card:nth-child(2) { --stagger-i: 1; }
+.avis-card:nth-child(3) { --stagger-i: 2; }
+
+.timeline-item:nth-child(1) { --stagger-i: 0; }
+.timeline-item:nth-child(2) { --stagger-i: 1; }
+.timeline-item:nth-child(3) { --stagger-i: 2; }
+.timeline-item:nth-child(4) { --stagger-i: 3; }
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -394,6 +440,9 @@ nav {
   .hero-bg {
     transform: none !important;
   }
+  .timeline-line line[data-drawn] {
+    transition: none;
+  }
 }
 
 /* ===== Heritage stats ===== */
@@ -449,12 +498,34 @@ section {
 }
 
 /* ===== Histoire / Timeline ===== */
-.timeline {
+.timeline-wrap {
   position: relative;
   max-width: 760px;
   margin: 0 auto;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  overflow: visible;
+}
+
+.timeline-line line {
+  stroke: var(--sand);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.timeline-line line[data-drawn] {
+  transition: stroke-dashoffset 1400ms var(--ease-expo-out);
+}
+
+.timeline {
+  position: relative;
   padding-left: 2.2rem;
-  border-left: 2px solid var(--sand);
 }
 
 .timeline-item {
@@ -922,11 +993,61 @@ section {
   border-color: var(--terracotta);
 }
 
+/* Inline validation — error state shake (ui-animation transition-recipes) */
+@keyframes field-shake {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(4px); }
+  50%  { transform: translateX(-2px); }
+  75%  { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+
+.form-row input.is-invalid {
+  border-color: #e07a5f;
+}
+
+.form-row input.is-shaking {
+  animation: field-shake 220ms var(--ease-press);
+}
+
+.field-error {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: #e8a598;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.form-row input.is-invalid + .field-error {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Submit button label swap (text-state-swap recipe) */
+.btn-label {
+  display: inline-block;
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out, filter 150ms ease-in-out;
+}
+
+.btn-label.is-swapping {
+  opacity: 0;
+  transform: translateY(4px);
+  filter: blur(2px);
+}
+
 .form-note {
   margin-top: 1rem;
   font-size: 0.8rem;
   color: rgba(245,240,225,0.6);
   text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-row input.is-shaking {
+    animation: none;
+  }
 }
 
 /* ===== Contact ===== */

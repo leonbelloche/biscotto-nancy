@@ -224,9 +224,64 @@
   /* ---------- Reservation form -> mailto ---------- */
   var reservationForm = document.getElementById('reservationForm');
 
+  function swapButtonLabel(button, text, revertAfter) {
+    var label = button.querySelector('.btn-label');
+    if (!label) return;
+    var original = label.textContent;
+    label.classList.add('is-swapping');
+    window.setTimeout(function () {
+      label.textContent = text;
+      label.classList.remove('is-swapping');
+    }, 150);
+    if (revertAfter) {
+      window.setTimeout(function () {
+        label.classList.add('is-swapping');
+        window.setTimeout(function () {
+          label.textContent = original;
+          label.classList.remove('is-swapping');
+        }, 150);
+      }, revertAfter);
+    }
+  }
+
+  function shakeInvalidField(input) {
+    input.classList.add('is-invalid');
+    input.classList.add('is-shaking');
+    input.addEventListener('animationend', function handler() {
+      input.classList.remove('is-shaking');
+      input.removeEventListener('animationend', handler);
+    });
+  }
+
   if (reservationForm) {
+    var resInputs = reservationForm.querySelectorAll('input');
+
+    resInputs.forEach(function (input) {
+      input.addEventListener('input', function () {
+        if (input.checkValidity()) {
+          input.classList.remove('is-invalid');
+        }
+      });
+    });
+
     reservationForm.addEventListener('submit', function (e) {
       e.preventDefault();
+
+      var firstInvalid = null;
+      resInputs.forEach(function (input) {
+        if (!input.checkValidity()) {
+          shakeInvalidField(input);
+          if (!firstInvalid) firstInvalid = input;
+        } else {
+          input.classList.remove('is-invalid');
+        }
+      });
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
       var name = document.getElementById('resName').value.trim();
       var date = document.getElementById('resDate').value;
       var guests = document.getElementById('resGuests').value;
@@ -238,9 +293,49 @@
         'Nombre de convives : ' + guests + '\n' +
         'E-mail de contact : ' + email;
 
+      var submitButton = reservationForm.querySelector('button[type="submit"]');
+      swapButtonLabel(submitButton, 'Ouverture de votre messagerie…', 2500);
+
       window.location.href = 'mailto:contact@lebiscotto-nancy.fr' +
         '?subject=' + encodeURIComponent(subject) +
         '&body=' + encodeURIComponent(body);
     });
+  }
+
+  /* ---------- Timeline: self-drawing SVG line ---------- */
+  var timelineWrap = document.getElementById('timelineWrap');
+  var timelineLine = document.getElementById('timelineLine');
+
+  if (timelineWrap && timelineLine) {
+    var lineEl = timelineLine.querySelector('line');
+
+    function drawTimelineLine() {
+      var length = lineEl.getTotalLength();
+      lineEl.style.strokeDasharray = length;
+      lineEl.style.strokeDashoffset = reduceMotion ? 0 : length;
+      lineEl.setAttribute('data-drawn', 'true');
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          lineEl.style.strokeDashoffset = 0;
+        });
+      });
+    }
+
+    if ('IntersectionObserver' in window) {
+      var timelineObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              drawTimelineLine();
+              timelineObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      timelineObserver.observe(timelineWrap);
+    } else {
+      lineEl.style.strokeDashoffset = 0;
+    }
   }
 })();

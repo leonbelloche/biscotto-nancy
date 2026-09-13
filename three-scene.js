@@ -107,12 +107,38 @@ import * as THREE from 'three';
 
   var clock = new THREE.Clock();
 
+  // Subtle mouse-parallax camera tilt — fine pointers only, so touch
+  // devices never replay a "hover" effect on tap (ui-animation skill).
+  var supportsFineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var targetTiltX = 0;
+  var targetTiltY = 0;
+
+  if (supportsFineHover) {
+    hero.addEventListener('mousemove', function (e) {
+      var rect = hero.getBoundingClientRect();
+      var nx = (e.clientX - rect.left) / rect.width - 0.5;
+      var ny = (e.clientY - rect.top) / rect.height - 0.5;
+      targetTiltX = nx * 0.6;
+      targetTiltY = ny * 0.4;
+    });
+    hero.addEventListener('mouseleave', function () {
+      targetTiltX = 0;
+      targetTiltY = 0;
+    });
+  }
+
   function animate() {
     requestAnimationFrame(animate);
     if (!isVisible || !isTabVisible) return;
 
     var elapsed = clock.getElapsedTime();
     var pos = geometry.attributes.position;
+
+    if (supportsFineHover) {
+      camera.position.x += (targetTiltX - camera.position.x) * 0.04;
+      camera.position.y += (-targetTiltY - camera.position.y) * 0.04;
+      camera.lookAt(0, 0, 0);
+    }
 
     for (var i = 0; i < PARTICLE_COUNT; i++) {
       var idx = i * 3;
