@@ -302,40 +302,4 @@
     });
   }
 
-  /* ---------- Timeline: self-drawing SVG line ---------- */
-  var timelineWrap = document.getElementById('timelineWrap');
-  var timelineLine = document.getElementById('timelineLine');
-
-  if (timelineWrap && timelineLine) {
-    var lineEl = timelineLine.querySelector('line');
-
-    function drawTimelineLine() {
-      var length = lineEl.getTotalLength();
-      lineEl.style.strokeDasharray = length;
-      lineEl.style.strokeDashoffset = reduceMotion ? 0 : length;
-      lineEl.setAttribute('data-drawn', 'true');
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          lineEl.style.strokeDashoffset = 0;
-        });
-      });
-    }
-
-    if ('IntersectionObserver' in window) {
-      var timelineObserver = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              drawTimelineLine();
-              timelineObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
-      timelineObserver.observe(timelineWrap);
-    } else {
-      lineEl.style.strokeDashoffset = 0;
-    }
-  }
 })();

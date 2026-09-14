@@ -17,7 +17,7 @@ clients (restaurants, salons, artisans...).
   `micro-interaction-spec` et `threejs-animation` installés depuis skills.sh
 
 ## Structure
-- `index.html` — contenu et structure : hero, frise chronologique, plat signature,
+- `index.html` — contenu et structure : hero, chiffres clés, plat signature,
   menu, portrait du chef, galerie avec lightbox, avis, formulaire de réservation,
   contact
 - `style.css` — design system (tokens couleur/typo, composants, responsive)
@@ -29,7 +29,7 @@ clients (restaurants, salons, artisans...).
   progressive pure, aucun impact si le module ne charge pas)
 
 ## À personnaliser avant mise en production
-- Frise chronologique, mentions presse et adresse e-mail du formulaire
+- Mentions presse et adresse e-mail du formulaire
   (`contact@lebiscotto-nancy.fr`) sont des exemples à remplacer
 - Le formulaire de réservation ouvre le client mail du visiteur ; à connecter
   à un vrai système de réservation si besoin

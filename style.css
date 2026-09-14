@@ -199,8 +199,7 @@ ul, ol {
    (see ui-animation choreography: don't double-animate container + children) */
 .menu-item.reveal,
 .galerie-item.reveal,
-.avis-card.reveal,
-.timeline-item.reveal {
+.avis-card.reveal {
   transition-delay: calc(var(--stagger-i, 0) * var(--stagger-step));
 }
 
@@ -216,11 +215,6 @@ ul, ol {
 .avis-card:nth-child(1) { --stagger-i: 0; }
 .avis-card:nth-child(2) { --stagger-i: 1; }
 .avis-card:nth-child(3) { --stagger-i: 2; }
-
-.timeline-item:nth-child(1) { --stagger-i: 0; }
-.timeline-item:nth-child(2) { --stagger-i: 1; }
-.timeline-item:nth-child(3) { --stagger-i: 2; }
-.timeline-item:nth-child(4) { --stagger-i: 3; }
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -440,9 +434,6 @@ nav {
   .hero-bg {
     transform: none !important;
   }
-  .timeline-line line[data-drawn] {
-    transition: none;
-  }
 }
 
 /* ===== Heritage stats ===== */
@@ -495,78 +486,6 @@ section {
   margin-top: 0.8rem;
   color: var(--ink-soft);
   font-size: 1.05rem;
-}
-
-/* ===== Histoire / Timeline ===== */
-.timeline-wrap {
-  position: relative;
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-.timeline-line {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  overflow: visible;
-}
-
-.timeline-line line {
-  stroke: var(--sand);
-  stroke-width: 2;
-  vector-effect: non-scaling-stroke;
-}
-
-.timeline-line line[data-drawn] {
-  transition: stroke-dashoffset 1400ms var(--ease-expo-out);
-}
-
-.timeline {
-  position: relative;
-  padding-left: 2.2rem;
-}
-
-.timeline-item {
-  position: relative;
-  padding-bottom: 3rem;
-}
-
-.timeline-item:last-child {
-  padding-bottom: 0;
-}
-
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -2.2rem;
-  top: 0.35rem;
-  width: 14px;
-  height: 14px;
-  margin-left: -6px;
-  border-radius: 50%;
-  background-color: var(--clay);
-  border: 3px solid var(--cream);
-  box-shadow: 0 0 0 2px var(--sand);
-}
-
-.timeline-year {
-  display: inline-block;
-  font-family: var(--font-display);
-  color: var(--terracotta-dark);
-  font-size: 1.1rem;
-  margin-bottom: 0.4rem;
-}
-
-.timeline-body h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-  color: var(--ink);
-}
-
-.timeline-body p {
-  color: var(--ink-soft);
 }
 
 /* ===== Press strip ===== */
@@ -1211,14 +1130,6 @@ section {
   .menu-categories {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-  }
-
-  .timeline {
-    padding-left: 1.6rem;
-  }
-
-  .timeline-item::before {
-    left: -1.6rem;
   }
 
   .chef-grid {
